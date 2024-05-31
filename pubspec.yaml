@@ -1,0 +1,24 @@
+name: microsoft_clarity_plugin
+description: "Flutter Plugin For Microsoft Clarity Service."
+version: 0.0.1
+
+environment:
+  sdk: '>=3.0.0'
+  flutter: '>=3.10.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  plugin_platform_interface: 2.1.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: 4.0.0
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.example.microsoft_clarity_plugin
+        pluginClass: MicrosoftClarityPlugin
