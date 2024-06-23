@@ -1,5 +1,6 @@
 package com.example.microsoft_clarity_plugin
 
+import android.annotation.SuppressLint
 import android.content.Context
 import com.microsoft.clarity.Clarity
 import com.microsoft.clarity.ClarityConfig
@@ -23,6 +24,7 @@ class MicrosoftClarityPlugin: FlutterPlugin, MethodCallHandler {
     channel.setMethodCallHandler(this)
   }
 
+  @SuppressLint("DiscouragedApi")
   override fun onMethodCall(call: MethodCall, result: Result) {
     if (call.method == "initializeMicrosoftClarity") {
       val resId = context.resources.getIdentifier("microsoft_clarity_project_id", "string", context.packageName)
@@ -33,6 +35,16 @@ class MicrosoftClarityPlugin: FlutterPlugin, MethodCallHandler {
       } else {
         result.error("NOT_FOUND", "Project ID not found", null)
       }
+    } else if(call.method == "setCustomUserId") {
+      val customUserId: String? = call.argument("customUserId");
+      if (customUserId == null) {
+        result.error("INVALID_ARGUMENT", "customUserId is required", null)
+      } else {
+        Clarity.setCustomUserId(customUserId)
+        result.success("Custom User Id set successfully")
+      }
+    } else if(call.method == "getCurrentSessionId") {
+      result.success(Clarity.getCurrentSessionId());
     } else {
       result.notImplemented()
     }

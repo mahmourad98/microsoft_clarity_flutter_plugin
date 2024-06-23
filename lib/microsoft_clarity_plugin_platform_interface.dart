@@ -24,4 +24,8 @@ abstract class MicrosoftClarityPluginPlatform extends PlatformInterface {
   }
 
   Future<bool> initializeMicrosoftClarity();
+
+  Future<bool> setCustomUserId(String customUserId,);
+
+  Future<String?> getCurrentSessionId();
 }
