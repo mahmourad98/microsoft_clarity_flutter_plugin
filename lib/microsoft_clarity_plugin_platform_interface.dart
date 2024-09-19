@@ -11,7 +11,6 @@ abstract class MicrosoftClarityPluginPlatform extends PlatformInterface {
   static MicrosoftClarityPluginPlatform _instance = MethodChannelMicrosoftClarityPlugin();
 
   /// The default instance of [MicrosoftClarityPluginPlatform] to use.
-  ///
   /// Defaults to [MethodChannelMicrosoftClarityPlugin].
   static MicrosoftClarityPluginPlatform get instance => _instance;
 

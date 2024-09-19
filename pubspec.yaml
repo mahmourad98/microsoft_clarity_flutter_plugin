@@ -22,3 +22,5 @@ flutter:
       android:
         package: com.example.microsoft_clarity_plugin
         pluginClass: MicrosoftClarityPlugin
+      ios:
+        pluginClass: MicrosoftClarityPlugin
