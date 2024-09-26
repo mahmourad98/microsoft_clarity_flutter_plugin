@@ -10,32 +10,29 @@ public class MicrosoftClarityPlugin: NSObject, FlutterPlugin {
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-    guard let args = call.arguments as? [String: Any] else {
-      let emptyArgs: [String: Any] = [:]
-      return
-    }
     switch call.method {
-    case "initializeMicrosoftClarity":
-      if let projectId = Bundle.main.object(forInfoDictionaryKey: "MICROSOFT_CLARITY_PROJECT_ID") as? String {
-        initializeMicrosoftClarity(projectId: projectId)
-        print("MICROSOFT_CLARITY_PROJECT initialized successfully.")
-        result("clarity-project-initialization-success")
-      } else {
-        print("MICROSOFT_CLARITY_PROJECT_ID not found in Info.plist file.")
-        result(FlutterError(code: "MISSING_MICROSOFT_CLARITY_PROJECT_ID", message: "project id is required", details: nil))
-      }
-    case "setCustomUserId":
-      if let id = args["customUserId"] as? String {
-        ClaritySDK.setCustomUserId(id)
-        print("CUSTOM_USER_ID was not provided.")
-        result("custom-user-id-setting-success")
-      } else {
-        result(FlutterError(code: "MISSING_CUSTOM_USER_ID", message: "custom user ID is required", details: nil))
-      }
-    case "getCurrentSessionId":
-      result(ClaritySDK.getCurrentSessionId())
-    default:
-      result(FlutterMethodNotImplemented)
+      case "initializeMicrosoftClarity":
+        if let projectId = Bundle.main.object(forInfoDictionaryKey: "MICROSOFT_CLARITY_PROJECT_ID") as? String {
+          initializeMicrosoftClarity(projectId: projectId)
+          print("MICROSOFT_CLARITY_PROJECT initialized successfully.")
+          result("clarity-project-initialization-success")
+        } else {
+          print("MICROSOFT_CLARITY_PROJECT_ID not found in Info.plist file.")
+          result(FlutterError(code: "MISSING_MICROSOFT_CLARITY_PROJECT_ID", message: "project id is required", details: nil))
+        }
+      case "setCustomUserId":
+        if let args = call.arguments as? Dictionary<String, Any>, let id = args["customUserId"] as? String {
+          ClaritySDK.setCustomUserId(id)
+          print("CUSTOM_USER_ID was not provided.")
+          result("custom-user-id-setting-success")
+        } else {
+          print("CUSTOM_USER_ID not passed in arguments")
+          result(FlutterError(code: "MISSING_CUSTOM_USER_ID", message: "custom user ID is required", details: nil))
+        }
+      case "getCurrentSessionId":
+        result(ClaritySDK.getCurrentSessionId())
+      default:
+        result(FlutterMethodNotImplemented)
     }
   }
 
