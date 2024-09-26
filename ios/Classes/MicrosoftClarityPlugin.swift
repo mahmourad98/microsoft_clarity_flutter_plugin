@@ -16,7 +16,7 @@ public class MicrosoftClarityPlugin: NSObject, FlutterPlugin {
     }
     switch call.method {
     case "initializeMicrosoftClarity":
-      if let projectId = Bundle.main.object(forInfoDictionaryKey: "microsoft_clarity_project_id") as? String {
+      if let projectId = Bundle.main.object(forInfoDictionaryKey: "MICROSOFT_CLARITY_PROJECT_ID") as? String {
         initializeMicrosoftClarity(projectId: projectId)
         result("Clarity Initialized")
       } else {
