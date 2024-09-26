@@ -18,14 +18,17 @@ public class MicrosoftClarityPlugin: NSObject, FlutterPlugin {
     case "initializeMicrosoftClarity":
       if let projectId = Bundle.main.object(forInfoDictionaryKey: "MICROSOFT_CLARITY_PROJECT_ID") as? String {
         initializeMicrosoftClarity(projectId: projectId)
-        result("Clarity Initialized")
+        print("MICROSOFT_CLARITY_PROJECT initialized successfully.")
+        result("clarity-project-initialization-success")
       } else {
-        result(FlutterError(code: "NO_PROJECT_ID", message: "Project ID not found", details: nil))
+        print("MICROSOFT_CLARITY_PROJECT_ID not found in Info.plist file.")
+        result(FlutterError(code: "MISSING_MICROSOFT_CLARITY_PROJECT_ID", message: "project id is required", details: nil))
       }
     case "setCustomUserId":
       if let id = args["customUserId"] as? String {
         ClaritySDK.setCustomUserId(id)
-        result("custom user ID set successfully")
+        print("CUSTOM_USER_ID was not provided.")
+        result("custom-user-id-setting-success")
       } else {
         result(FlutterError(code: "MISSING_CUSTOM_USER_ID", message: "custom user ID is required", details: nil))
       }
