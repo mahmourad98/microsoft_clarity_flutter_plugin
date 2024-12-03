@@ -41,9 +41,6 @@ public class MicrosoftClarityPlugin: NSObject, FlutterPlugin {
       projectId: projectId,
       userId: nil, // Default user id
       logLevel: LogLevel.verbose,
-      allowMeteredNetworkUsage: true, // Allow metered network usage
-      enableWebViewCapture: true, // Enable web view capturing
-      disableOnLowEndDevices: false, // Allow running on low-end devices
       applicationFramework: ApplicationFramework.native
     )
     ClaritySDK.initialize(config: clarityConfig)

@@ -53,7 +53,7 @@ android {
 
     dependencies {
         implementation "androidx.annotation:annotation:1.8.0"
-        implementation 'com.microsoft.clarity:clarity:2.3.0'
+        implementation 'com.microsoft.clarity:clarity:3.0.0'
         testImplementation 'org.jetbrains.kotlin:kotlin-test'
         testImplementation 'org.mockito:mockito-core:5.2.0'
     }
@@ -61,11 +61,10 @@ android {
     testOptions {
         unitTests.all {
             useJUnitPlatform()
-
             testLogging {
-               events "passed", "skipped", "failed", "standardOut", "standardError"
-               outputs.upToDateWhen {false}
-               showStandardStreams = true
+                events "passed", "skipped", "failed", "standardOut", "standardError"
+                outputs.upToDateWhen {false}
+                showStandardStreams = true
             }
         }
     }

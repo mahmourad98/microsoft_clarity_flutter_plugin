@@ -57,13 +57,6 @@ class MicrosoftClarityPlugin: FlutterPlugin, MethodCallHandler {
         applicationFramework = ApplicationFramework.Native,
         logLevel = LogLevel.Verbose,
         userId = null, // Default user id
-        allowMeteredNetworkUsage = true, // Disallow metered network usage
-        enableWebViewCapture = true, // Enable web view capturing
-        allowedDomains = listOf("*"), // Allowed domains
-        allowedActivities = listOf(), // Allowed activities
-        disallowedActivities = listOf(), // Disallowed activities (ignore activities)
-        disableOnLowEndDevices = false, // Disallow Low End Devices
-        maximumDailyNetworkUsageInMB = null,// Disable on low-end devices
       )
       Clarity.initialize(it.applicationContext, config)
     }

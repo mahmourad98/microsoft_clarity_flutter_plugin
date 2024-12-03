@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'microsoft_clarity_plugin_platform_interface.dart';
 
 class MicrosoftClarityPlugin {
